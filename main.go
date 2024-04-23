@@ -62,8 +62,8 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 
 	if _, err := os.Stat(UPLOAD_DIR); os.IsNotExist(err) {
-		fmt.Println(UPLOAD_DIR, "does not exist")
-		err := os.MkdirAll(md.folders[dir], os.ModePerm)
+		fmt.Println("WARN", UPLOAD_DIR, "does not exist. Creating..")
+		err := os.MkdirAll(UPLOAD_DIR, os.ModePerm)
 		if err != nil {
 			fmt.Println("Error creating local upload dir:", err)
 			return

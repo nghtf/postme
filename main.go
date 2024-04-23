@@ -63,7 +63,11 @@ func main() {
 
 	if _, err := os.Stat(UPLOAD_DIR); os.IsNotExist(err) {
 		fmt.Println(UPLOAD_DIR, "does not exist")
-		return
+		err := os.MkdirAll(md.folders[dir], os.ModePerm)
+		if err != nil {
+			fmt.Println("Error creating local upload dir:", err)
+			return
+		}
 	}
 
 	fmt.Println("Listening at " + LISTEN_ON + API_ROUTE_POST)
